@@ -2,38 +2,31 @@
 
 int main()
 {
-    setlocale(LC_ALL, "rus");
+	setlocale(LC_ALL, "rus");										
 
-    int int1{}, int2{}, int3{};
-    int intMin{}, intAvg{}, intMax{};
+	int int1{}, int2{}, int3{};										
+	int intMin{}, intAvg{}, intMax{};
 
-    std::cout << "Ââåäèòå ïåğâîå ÷èñëî: ";
-    std::cin >> int1;
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¿ĞµÑ€Ğ²Ğ¾Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾: ";
+	std::cin >> int1;
 
-    std::cout << "Ââåäèòå âòîğîå ÷èñëî: ";
-    std::cin >> int2;
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ²Ñ‚Ğ¾Ñ€Ğ¾Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾: ";
+	std::cin >> int2;
 
-    std::cout << "Ââåäèòå òğåòüå ÷èñëî: ";
-    std::cin >> int3;
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ‚Ñ€ĞµÑ‚ÑŒĞµ Ñ‡Ğ¸ÑĞ»Ğ¾: ";
+	std::cin >> int3;
 
-    intMin = int1;
-    if (int2 < intMin) intMin = int2;
-    if (int3 < intMin) intMin = int3;
 
-  
-    intMax = int1;
-    if (int2 > intMax) intMax = int2;
-    if (int3 > intMax) intMax = int3;
+	intMin = (int1 <= int2) && (int1 <= int3) ? int1 : (int2 <= int3 ? int2 : int3);
 
-    
-    if (int1 != intMin && int1 != intMax)
-        intAvg = int1;
-    else if (int2 != intMin && int2 != intMax)
-        intAvg = int2;
-    else
-        intAvg = int3;
+	intMax = (int1 >= int2) && (int1 >= int3) ? int1 : (int2 >= int3 ? int2 : int3);
 
-    std::cout << "Ğåçóëüòàò: " << intMax << ' ' << intAvg << ' ' << intMin << std::endl;
+	intAvg = ((intMin == int1) && (intMax == int2)) || ((intMax == int1) && (intMin == int2)) ? int3 :
+		((intMin == int1) && (intMax == int3)) || ((intMax == int1) && (intMin == int3)) ? int2 :
+		int1;
 
-    return EXIT_SUCCESS;
+
+	std::cout << "\nĞ ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚: " << intMax << ' ' << intAvg << ' ' << intMin << std::endl;
+
+	return EXIT_SUCCESS;
 }
